@@ -19,10 +19,6 @@
 <script>
   //这里处理物理返回键，避免打包后点击一次直接退出应用
   window.apiready = function () {
-    api.setStatusBarStyle({
-      style: 'dark', // dark 状态栏字体为黑色，适用于浅色背景 light 状态栏字体为白色，适用于深色背景
-      color: '#ffffff'
-    })
     var timer = 0
     api.addEventListener({
       name: 'keyback'
@@ -39,7 +35,7 @@
             })
           } else {
             api.closeWidget({
-              id: 'A6009377066012', //这里改成自己的应用ID
+              id: 'A6081345905452', //这里改成自己的应用ID
               retData: {
                 name: 'closeWidget'
               },

@@ -13,10 +13,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const env = process.env.NODE_ENV == 'production' ? require('../config/prod.env') : require('../config/dev.build.env')
 
-console.log('--------env--------')
-console.log(env)
-console.log('--------env--------')
-
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
