@@ -13,39 +13,7 @@
   <link rel="stylesheet" href="http://image.yaonuokeji.com/yixi/static/material-design-icons/material-design-icons.css">
 </head>
 <body>
-<header></header>
 <div id="app"></div>
 <!-- built files will be auto injected -->
-<script>
-  //这里处理物理返回键，避免打包后点击一次直接退出应用
-  window.apiready = function () {
-    var timer = 0
-    api.addEventListener({
-      name: 'keyback'
-    }, function (ret, err) {
-      var currentTime = +new Date()
-      api.historyBack(function (ret, err) {
-        if (!ret.status) {
-          if ((currentTime - timer) > 2000) {
-            timer = currentTime
-            api.toast({
-              msg: '再按一次返回键退出应用',
-              duration: 2000,
-              location: 'bottom'
-            })
-          } else {
-            api.closeWidget({
-              id: 'A6081345905452', //这里改成自己的应用ID
-              retData: {
-                name: 'closeWidget'
-              },
-              silent: true
-            })
-          }
-        }
-      })
-    })
-  }
-</script>
 </body>
 </html>
