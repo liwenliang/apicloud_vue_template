@@ -14,9 +14,14 @@ export default new Router({
       component: Layout,
       children: [
         {
-          path: 'home',
+          path: '/home',
           name: 'Home',
           component: () => import('@/views/home/index')
+        },
+        {
+          path: '/home/temp',
+          name: 'HomeTemp',
+          component: () => import('@/views/home/temp')
         }
       ]
     }

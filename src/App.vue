@@ -27,3 +27,10 @@ export default {
   }
 }
 </script>
+<style type="text/scss" lang="scss">
+  .app-container {
+    padding: 1em;
+    background: #fff;
+    min-height: calc(100vh - 58px);
+  }
+</style>

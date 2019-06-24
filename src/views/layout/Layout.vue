@@ -1,9 +1,7 @@
 <template>
   <div>
     <UpdateWidgets/>
-    <transition name="fade" mode="out-in">
-      <router-view :key="key"/>
-    </transition>
+    <router-view v-transition :key="key"/>
   </div>
 </template>
 

@@ -4,7 +4,7 @@
       <mu-icon value="keyboard_arrow_left"/>
     </mu-button>
     {{ pageTitle }}
-    <mu-button slot="right" icon color="#fff" @click="doLogout">
+    <mu-button v-if="!noLogout" slot="right" icon color="#fff" @click="doLogout">
       <mu-icon value="logout"/>
     </mu-button>
   </mu-appbar>
@@ -19,6 +19,10 @@ export default {
       default: 'noTitle'
     },
     noGoBack: {
+      type: Boolean,
+      default: false
+    },
+    noLogout: {
       type: Boolean,
       default: false
     }
