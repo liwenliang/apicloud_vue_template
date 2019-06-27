@@ -1,5 +1,5 @@
 <template>
-  <mu-appbar color="primary">
+  <mu-appbar style="position: fixed;width: 100%;" color="primary">
     <mu-button v-if="!noGoBack" slot="left" icon color="fff" @click="goBack">
       <mu-icon value="keyboard_arrow_left"/>
     </mu-button>

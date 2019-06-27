@@ -22,6 +22,11 @@ export default new Router({
           path: '/home/temp',
           name: 'HomeTemp',
           component: () => import('@/views/home/temp')
+        },
+        {
+          path: '/search',
+          name: 'Search',
+          component: () => import('@/views/search/index')
         }
       ]
     }
