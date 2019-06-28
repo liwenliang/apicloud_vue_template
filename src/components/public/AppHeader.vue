@@ -1,13 +1,17 @@
 <template>
-  <mu-appbar style="position: fixed;width: 100%;" color="primary">
-    <mu-button v-if="!noGoBack" slot="left" icon color="fff" @click="goBack">
-      <mu-icon value="keyboard_arrow_left"/>
-    </mu-button>
-    {{ pageTitle }}
-    <mu-button v-if="!noLogout" slot="right" icon color="#fff" @click="doLogout">
-      <mu-icon value="logout"/>
-    </mu-button>
-  </mu-appbar>
+  <div>
+    <mu-appbar color="primary">
+      <mu-button slot="left" icon color="fff" @click="showMenu">
+        <mu-icon value="menu"/>
+      </mu-button>
+      <div style="text-align: center;">
+        {{ pageTitle }}
+      </div>
+      <mu-avatar slot="right">
+        <img src="../../assets/img/uicon.jpg">
+      </mu-avatar>
+    </mu-appbar>
+  </div>
 </template>
 
 <script>
@@ -17,14 +21,6 @@ export default {
     pageTitle: {
       type: String,
       default: 'noTitle'
-    },
-    noGoBack: {
-      type: Boolean,
-      default: false
-    },
-    noLogout: {
-      type: Boolean,
-      default: false
     }
   },
   methods: {
@@ -39,17 +35,13 @@ export default {
         }
       })
     },
-    goBack() {
-      this.$router.back()
+    showMenu() {
+      this.$parent.showDrawer()
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .mu-modal-content{
-    .mu-modal-icon {
-      float: left;
-    }
-  }
+
 </style>

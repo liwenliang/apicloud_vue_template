@@ -26,8 +26,7 @@ Vue.use(Loading)
 // vueg根据url深度判断是入场还是离场，默认情况下我们进入到某个页面认为他比当前有更深的目录层级
 // 这种约定还是不错的
 Vue.use(vueg, router, {
-  shadow: false,
-  disableAtSameDepths: true
+  shadow: false
 })
 
 /* eslint-disable no-new */

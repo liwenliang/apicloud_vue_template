@@ -10,25 +10,35 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      redirect: '/home',
+      redirect: '/movie',
       component: Layout,
       children: [
         {
-          path: '/home',
-          name: 'Home',
-          component: () => import('@/views/home/index')
+          path: '/movie',
+          name: 'Movie',
+          component: () => import('@/views/movie/index')
         },
         {
-          path: '/home/temp',
-          name: 'HomeTemp',
-          component: () => import('@/views/home/temp')
+          path: '/music',
+          name: 'Music',
+          component: () => import('@/views/music/index')
         },
         {
-          path: '/search',
-          name: 'Search',
-          component: () => import('@/views/search/index')
+          path: '/book',
+          name: 'Book',
+          component: () => import('@/views/book/index')
+        },
+        {
+          path: '/picture',
+          name: 'Picture',
+          component: () => import('@/views/picture/index')
         }
       ]
+    },
+    {
+      path: '/movie/detail',
+      name: 'MovieDetail',
+      component: () => import('@/views/movie/detail')
     }
   ]
 })
