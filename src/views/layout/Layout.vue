@@ -91,7 +91,8 @@ export default {
     top: 0;
   }
   .bottom-nav {
-    position: fixed;
+    /*如果不加important，这个属性在打包后会被覆盖*/
+    position: fixed !important;
     width: 100%;
     top: calc(100vh - 56px);
   }
