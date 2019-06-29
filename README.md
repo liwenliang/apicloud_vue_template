@@ -1,3 +1,9 @@
+## Vue APICloud脚手架
+
+![image.png](http://blogimage.houjiyi.com/FjSQ2j_atl8Wz0FX4hZKIPFdQFBB)
+
+![image.png](http://blogimage.houjiyi.com/FhUZb2UI1q5iXH2IAjBMqUSpS3Gu)
+
 apicloud对应的前端项目脚手架，通过这个脚手架可以方便的使用vue语法开发apicloud项目，其中的app更新部分要换成自己的更新逻辑。这里使用的是自己项目中的更新代码逻辑。
 
 > npm install           安装依赖
