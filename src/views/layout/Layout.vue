@@ -1,6 +1,5 @@
 <template>
   <div>
-    <UpdateWidgets/>
     <app-header :no-go-back="noGoBack" :page-title="pageTitle" :no-logout="noLogout" class="top-nav"/>
     <router-view :key="key" class="main-container"/>
     <app-bottom :tabs="tabs"/>
@@ -12,15 +11,13 @@
 import appHeader from '@/components/public/AppHeader'
 import appBottom from '@/components/public/AppBottom'
 import appDrawer from '@/components/public/AppDrawer'
-import UpdateWidgets from '@/components/widgets/update'
 
 export default {
   name: 'Layout',
   components: {
     appHeader,
     appBottom,
-    appDrawer,
-    UpdateWidgets
+    appDrawer
   },
   data() {
     return {

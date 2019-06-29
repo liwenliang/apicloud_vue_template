@@ -23,6 +23,12 @@ export default {
       setTimeout(() => {
         if (window.api) {
           this.checkUpdate()
+          // 监听应用从后台回到前台事件
+          window.api.addEventListener({
+            name: 'resume'
+          }, () => {
+            this.checkUpdate()
+          })
         } else {
           this.startCheck()
         }

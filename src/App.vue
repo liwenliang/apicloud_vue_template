@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <UpdateWidgets/>
     <router-view v-transition/>
   </div>
 </template>
 
 <script>
+import UpdateWidgets from '@/components/widgets/update'
+
 export default {
   name: 'App',
+  components: {
+    UpdateWidgets
+  },
   mounted() {
     (function(doc, win) {
       const html = doc.getElementsByTagName('html')[0]

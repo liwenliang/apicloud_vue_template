@@ -1,5 +1,7 @@
 <template>
-  <div>music</div>
+  <div style="padding: 1em;">
+    <a href="myfirstapp://" style="font-size: 2em">234b</a>
+  </div>
 </template>
 
 <script>
