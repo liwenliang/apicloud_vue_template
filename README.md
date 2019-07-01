@@ -29,5 +29,9 @@ apicloud对应的前端项目脚手架，通过这个脚手架可以方便的使
 - 使用APICloud提供的推送功能需要添加push模块，只要添加了就行，无需做任何其他设置，除非你有需要
 - 使用APICloud提供的自动更新功能需要添加mam模块，同样是只要添加了就行，无需做任何其他设置
 
-![image.png](http://blogimage.houjiyi.com/Fod5a37nkq7NLAb7kXIp3s7i_YUZ)
+<img src="http://blogimage.houjiyi.com/Fod5a37nkq7NLAb7kXIp3s7i_YUZ" height="300px">
+
+- 启用定制广告页
+
+<img src="http://blogimage.houjiyi.com/FnAl8rsKBq9gt2eDoetnwYTPAc20" height="300px">
 

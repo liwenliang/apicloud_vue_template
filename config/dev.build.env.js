@@ -1,5 +1,5 @@
 'use strict'
 module.exports = {
   NODE_ENV: '"development"',
-  BASE_API: '"http://apitest.proxy.aikeyi.yaonuokeji.com"'
+  BASE_API: '""'
 }
