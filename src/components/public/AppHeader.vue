@@ -23,6 +23,19 @@ export default {
       default: 'noTitle'
     }
   },
+  // data() {
+  //   return {
+  //     headerStyle: {
+  //       paddingTop: '20px',
+  //       backgroundColor: '#2196f3'
+  //     }
+  //   }
+  // },
+  mounted() {
+    // if (window.api && window.api.safeArea) {
+    //   this.headerStyle.paddingTop = window.api.safeArea.top + 'px'
+    // }
+  },
   methods: {
     doLogout() {
       this.$confirm('退出登录？', '提示', {

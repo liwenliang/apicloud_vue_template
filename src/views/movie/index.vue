@@ -10,7 +10,7 @@
             </div>
           </mu-list-item-action>
           <mu-list-item-content>
-            <mu-list-item-title>{{ start + idx + 1 }}:{{ item.title }}({{ item.year }})</mu-list-item-title>
+            <mu-list-item-title>{{ (page - 1) * page_size + idx + 1 }}:{{ item.title }}({{ item.year }})</mu-list-item-title>
             <mu-list-item-sub-title>
               <span style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">导演：{{ getKeys(item.directors, 'name') }}</span>
             </mu-list-item-sub-title>
@@ -23,7 +23,7 @@
       </template>
     </mu-list>
     <mu-flex class="page-nation" justify-content="center">
-      <mu-pagination :page-count="5" :total="total" :current.sync="page" style="text-align: center;" raised/>
+      <mu-pagination :page-count="5" :total="total" :current.sync="page" style="text-align: center;" raised @change="getList"/>
     </mu-flex>
     <mu-dialog :open.sync="detailDialogShow" transition="slide-bottom" fullscreen>
       <img :src="`https://images.weserv.nl/?url=${detailItem.images.large}`" style="position: absolute;width: 100%;height: 100%;opacity: 0.1;z-index: 0;" alt="">
@@ -62,7 +62,6 @@ export default {
       list: [],
       page: 1,
       page_size: 10,
-      start: 0,
       detailDialogShow: false,
       detailItem: {
         rating: {},
@@ -78,16 +77,12 @@ export default {
       'movieInfo'
     ])
   },
-  watch: {
-    page() {
-      this.getList()
-    }
-  },
   created() {
     this.$parent.setHeader('电影列表', true, false)
     if (this.movieInfo.movieList.length > 0) {
       this.list = this.movieInfo.movieList
       this.page = this.movieInfo.page
+      this.total = this.movieInfo.total
     } else {
       this.getList()
     }
@@ -111,10 +106,10 @@ export default {
       top250({ page: this.page, page_size: this.page_size }).then(res => {
         hideProgress()
         this.total = res.total
-        this.start = res.start
         this.list = res.subjects
         this.$store.commit('movie/setMovieInfo', {
           page: this.page,
+          total: this.total,
           movieList: this.list
         })
       })

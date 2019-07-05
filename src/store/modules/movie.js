@@ -3,7 +3,7 @@ const movie = {
   state: {
     movieInfo: {
       page: 1,
-      page_size: 20,
+      total: 0,
       movieList: []
     }
   },
