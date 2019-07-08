@@ -1,6 +1,11 @@
 <template>
   <mu-container ref="container">
-    <mu-list textline="three-line">
+    <mu-container v-if="list.length===0" class="loading-container">
+      <mu-circular-progress :size="36"/>
+      <br>
+      <span>加载资源中...</span>
+    </mu-container>
+    <mu-list v-if="list.length>0" textline="three-line">
       <template v-for="(item, idx) in list">
         <mu-list-item :key="`item${idx}`" avatar button @click="showDetail(item.id)">
           <mu-list-item-action>
@@ -22,7 +27,7 @@
         <mu-divider :key="`divide${idx}`"/>
       </template>
     </mu-list>
-    <mu-flex class="page-nation" justify-content="center">
+    <mu-flex v-if="list.length>0" class="page-nation" justify-content="center">
       <mu-pagination :page-count="5" :total="total" :current.sync="page" style="text-align: center;" raised @change="getList"/>
     </mu-flex>
     <mu-dialog :open.sync="detailDialogShow" transition="slide-bottom" fullscreen>
@@ -126,5 +131,9 @@ export default {
   }
   .page-nation {
     margin-bottom: 1em;
+  }
+  .loading-container {
+    text-align: center;
+    padding-top: 1em;
   }
 </style>
