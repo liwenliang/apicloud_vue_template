@@ -1,18 +1,12 @@
 <template>
   <div id="app">
-    <UpdateWidgets/>
-    <router-view v-transition/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import UpdateWidgets from '@/components/widgets/update'
-
 export default {
   name: 'App',
-  components: {
-    UpdateWidgets
-  },
   mounted() {
     (function(doc, win) {
       const html = doc.getElementsByTagName('html')[0]
@@ -24,7 +18,7 @@ export default {
         if (!clientW) {
           return
         }
-        html.style.fontSize = 100 * (clientW / 750) + 'px'
+        html.style.fontSize = 100 * (clientW / 1280) + 'px'
       }
       win.addEventListener(reEvt, reFontSize)
       // DOMContentLoaded->dom加载完就执行,onload要dom/css/js都加载完才执行
@@ -33,9 +27,3 @@ export default {
   }
 }
 </script>
-<style type="text/scss" lang="scss">
-  #app {
-    min-height: 100vh;
-    background-color: #fff;
-  }
-</style>

@@ -1,6 +1,6 @@
 import store from 'store'
 
-const TokenKey = 'template-token' // 不同app最好弄成不一样的key
+const TokenKey = 'supplyCabinet-token' // 不同app最好弄成不一样的key
 
 export function getToken() {
   return store.get(TokenKey)

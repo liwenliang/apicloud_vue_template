@@ -5,6 +5,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import '@/assets/scss/reset.css'
 
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'

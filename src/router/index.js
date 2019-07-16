@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '@/views/layout/Layout'
+import Layout_Home from '@/views/layout/Layout_home'
+import Layout_Operate from '@/views/layout/Layout_operate'
 
 Vue.use(Router)
 
@@ -10,35 +11,27 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      redirect: '/movie',
-      component: Layout,
+      redirect: '/home',
+      component: Layout_Home,
       children: [
         {
-          path: '/movie',
-          name: 'Movie',
-          component: () => import('@/views/movie/index')
-        },
-        {
-          path: '/music',
-          name: 'Music',
-          component: () => import('@/views/music/index')
-        },
-        {
-          path: '/book',
-          name: 'Book',
-          component: () => import('@/views/book/index')
-        },
-        {
-          path: '/picture',
-          name: 'Picture',
-          component: () => import('@/views/picture/index')
+          path: '/home',
+          name: 'Home',
+          component: () => import('@/views/home/index')
         }
       ]
     },
     {
-      path: '/movie/detail',
-      name: 'MovieDetail',
-      component: () => import('@/views/movie/detail')
+      path: '/operate',
+      name: 'Operate',
+      component: Layout_Operate,
+      children: [
+        {
+          path: '/operate/get',
+          name: 'OperateGet',
+          component: () => import('@/views/operate/get')
+        }
+      ]
     }
   ]
 })
