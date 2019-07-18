@@ -6,7 +6,7 @@
         <div class="title">
           请刷卡登录
         </div>
-        <img src="../../assets/img/yaonuo_card_icon@2x.png" alt="">
+        <img src="../../assets/img/yaonuo_card_icon@2x.png" alt="" @click="doLogin">
         <div class="text-area">
           <div class="hos-title">
             首都医科大学附属医院
@@ -56,6 +56,15 @@ export default {
     return {
       statusClass: 'normal',
       openSimple: false
+    }
+  },
+  methods: {
+    doLogin() {
+      this.$store.dispatch('user/Login', { mobile: 15701536183, password: 123456 }).then(res => {
+        if (res.code === 0) {
+          this.$router.replace({ name: 'Home' })
+        }
+      })
     }
   }
 }

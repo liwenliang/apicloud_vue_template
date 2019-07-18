@@ -5,27 +5,75 @@
       <span class="text">请确认补衣操作</span>
     </div>
     <div class="desc-area">
-      <p>大码：放入<span class="red"> 10 </span>件，取出<span class="red"> 2 </span>件</p>
-      <p>中码：放入<span class="red"> 10 </span>件，取出<span class="red"> 2 </span>件</p>
-      <p>小码：放入<span class="red"> 10 </span>件，取出<span class="red"> 2 </span>件</p>
+      <p>大码：{{ bigDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(bigDiff) }} </span>件</p>
+      <p>中码：{{ mediumDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(mediumDiff) }} </span>件</p>
+      <p>小码：{{ smallDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(smallDiff) }} </span>件</p>
     </div>
     <div class="opt-area">
-      <mu-button class="opt-button red">首页</mu-button>
-      <mu-button class="opt-button green">完成补衣</mu-button>
+      <mu-button class="opt-button red" @click="goHome">首页</mu-button>
+      <mu-button class="opt-button green" @click="completeOption">完成补衣</mu-button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'GetVue',
   data() {
     return {
+      bigDiff: 0,
+      mediumDiff: 0,
+      smallDiff: 0
     }
   },
+  computed: {
+    ...mapGetters([
+      'beforeGridObj',
+      'gridObj'
+    ])
+  },
   created() {
+    this.getGridDiffent()
   },
   methods: {
+    getGridDiffent() {
+      const before = {
+        big: 0,
+        medium: 0,
+        small: 0,
+        empty: 0
+      }
+      for (const key in this.beforeGridObj) {
+        if (this.beforeGridObj.hasOwnProperty(key)) {
+          before[this.beforeGridObj[key].type]++
+        }
+      }
+
+      const current = {
+        big: 0,
+        medium: 0,
+        small: 0,
+        empty: 0
+      }
+      for (const key in this.gridObj) {
+        if (this.gridObj.hasOwnProperty(key)) {
+          current[this.gridObj[key].type]++
+        }
+      }
+
+      this.bigDiff = current.big - before.big
+      this.mediumDiff = current.medium - before.medium
+      this.smallDiff = current.small - before.small
+    },
+
+    completeOption() {
+      this.$router.replace({ name: 'Home' })
+    },
+
+    goHome() {
+      this.$router.replace({ name: 'Home' })
+    }
   }
 }
 </script>

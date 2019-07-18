@@ -4,30 +4,26 @@
       <div class="home-card-left">
         <div class="home-card-left-top">
           <div class="text-item">
-            <span class="left">大码大码</span>
+            <span class="left">大码</span>
             <span class="ok">剩余500件</span>
           </div>
           <div class="text-item">
-            <span class="left">大码</span>
+            <span class="left">中码</span>
             <span class="ok err">剩余50件</span>
           </div>
           <div class="text-item">
-            <span class="left">大码</span>
+            <span class="left">小码</span>
             <span class="ok">剩余50件</span>
           </div>
           <div class="text-item">
-            <span class="left">大码</span>
-            <span class="ok">剩余50件</span>
-          </div>
-          <div class="text-item">
-            <span class="left">大码</span>
-            <span class="ok">剩余50件</span>
+            <span class="left">空格子</span>
+            <span class="ok">剩余50个</span>
           </div>
         </div>
         <div class="home-card-left-bottom">
-          <!--          <mu-button class="btn-full">点击领取衣物</mu-button>-->
-          <mu-button class="btn-left-half">领取</mu-button>
-          <mu-button class="btn-right-half">补衣</mu-button>
+          <mu-button v-show="!isAdmin" class="btn-full" @click="goGetClothes">点击领取衣物</mu-button>
+          <mu-button v-show="isAdmin" class="btn-left-half" @click="goGetClothes">领取</mu-button>
+          <mu-button v-show="isAdmin" class="btn-right-half" @click="goSetClothes">补衣</mu-button>
         </div>
       </div>
       <div class="home-card-right">
@@ -64,7 +60,7 @@
             </div>
           </div>
           <div class="home-card-right-r-b">
-            <mu-button class="btn">退出登录</mu-button>
+            <mu-button class="btn" @click="doLogout">退出登录</mu-button>
           </div>
         </div>
       </div>
@@ -77,7 +73,27 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  data() {
+    return {
+      isAdmin: true
+    }
+  },
+  methods: {
+    doLogout() {
+      this.$store.dispatch('user/FedLogOut').then(() => {
+        this.$router.replace({ name: 'Login' })
+      })
+    },
+
+    goGetClothes() {
+      this.$router.replace({ name: 'OperateGet' })
+    },
+
+    goSetClothes() {
+      this.$router.replace({ name: 'OperateSet' })
+    }
+  }
 }
 </script>
 

@@ -15,8 +15,8 @@
       </mu-button>
     </div>
     <div class="opt-area">
-      <mu-button class="opt-button red">首页</mu-button>
-      <mu-button class="opt-button green">确认</mu-button>
+      <mu-button class="opt-button red" @click="goHome">首页</mu-button>
+      <mu-button class="opt-button green" @click="giveMeAClothes">确认</mu-button>
     </div>
   </div>
 </template>
@@ -62,6 +62,20 @@ export default {
         item.extraClass = ''
       })
       item.extraClass = 'active'
+    },
+
+    goHome() {
+      this.$router.replace({ name: 'Home' })
+    },
+
+    giveMeAClothes() {
+      const item = this.buttons.find(item => {
+        return item.extraClass === 'active'
+      })
+      this.$alert(`给我一件${item.label}的衣服`, '提示', {
+        okLabel: '知道了'
+      }).then(() => {
+      })
     }
   }
 }

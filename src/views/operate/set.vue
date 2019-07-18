@@ -34,12 +34,14 @@
       </div>
     </div>
     <div class="opt-area">
-      <mu-button class="opt-button green">确认</mu-button>
+      <mu-button class="opt-button green" @click="confirmInfo">确认</mu-button>
     </div>
   </div>
 </template>
 
 <script>
+import store from 'store'
+
 const DefaultGridObj = {}
 for (let i = 1; i <= 99; i++) {
   DefaultGridObj[i] = {
@@ -51,7 +53,8 @@ export default {
   name: 'GetVue',
   data() {
     return {
-      gridObj: DefaultGridObj,
+      beforeGridObj: store.get('gridObj') || JSON.parse(JSON.stringify(DefaultGridObj)),
+      gridObj: store.get('gridObj') || JSON.parse(JSON.stringify(DefaultGridObj)),
       startMouseOver: false,
       downIndex: -1,
       overIndex: -1,
@@ -134,6 +137,13 @@ export default {
         }
       }
       return num
+    },
+
+    confirmInfo() {
+      this.$store.commit('app/setBeforeGridObj', this.beforeGridObj)
+      this.$store.commit('app/setGridObj', this.gridObj)
+      store.set('gridObj', this.gridObj)
+      this.$router.replace({ name: 'OperateSetConfirm' })
     }
   }
 }

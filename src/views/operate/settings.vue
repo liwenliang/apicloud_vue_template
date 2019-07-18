@@ -56,14 +56,13 @@
       </mu-form>
     </div>
     <div class="opt-area">
-      <mu-button class="opt-button red">首页</mu-button>
+      <mu-button class="opt-button red" @click="goHome">首页</mu-button>
       <mu-button class="opt-button green">保存</mu-button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'GetVue',
   data() {
@@ -78,15 +77,11 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters([
-      'machineId'
-    ])
-  },
-  created() {
-    this.settingForm.id = this.machineId
-  },
-  methods: {}
+  methods: {
+    goHome() {
+      this.$router.replace({ name: 'Home' })
+    }
+  }
 }
 </script>
 
