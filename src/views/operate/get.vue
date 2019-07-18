@@ -22,22 +22,34 @@
 </template>
 
 <script>
+import store from 'store'
+const DefaultGridObj = {}
+for (let i = 1; i <= 99; i++) {
+  DefaultGridObj[i] = {
+    type: 'empty',
+    before: 'empty'
+  }
+}
 export default {
   name: 'GetVue',
   data() {
     return {
+      gridObj: store.get('gridObj') || JSON.parse(JSON.stringify(DefaultGridObj)),
       timeBack: 120,
       buttons: [
         {
           label: '小码',
+          name: 'small',
           extraClass: ''
         },
         {
           label: '中码',
+          name: 'medium',
           extraClass: 'active'
         },
         {
           label: '大码',
+          name: 'big',
           extraClass: ''
         }
       ]
@@ -75,6 +87,17 @@ export default {
       this.$alert(`给我一件${item.label}的衣服`, '提示', {
         okLabel: '知道了'
       }).then(() => {
+        const name = item.name
+        for (const key in this.gridObj) {
+          if (this.gridObj.hasOwnProperty(key)) {
+            if (this.gridObj[key].type === name) {
+              this.gridObj[key].type = 'empty'
+              this.gridObj[key].before = 'empty'
+              break
+            }
+          }
+        }
+        store.set('gridObj', this.gridObj)
       })
     }
   }

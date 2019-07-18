@@ -5,19 +5,19 @@
         <div class="home-card-left-top">
           <div class="text-item">
             <span class="left">大码</span>
-            <span class="ok">剩余500件</span>
+            <span :class="gridNumObj.big<6?'err':''" class="ok">剩余 {{ gridNumObj.big }} 件</span>
           </div>
           <div class="text-item">
             <span class="left">中码</span>
-            <span class="ok err">剩余50件</span>
+            <span :class="gridNumObj.medium<6?'err':''" class="ok">剩余 {{ gridNumObj.medium }} 件</span>
           </div>
           <div class="text-item">
             <span class="left">小码</span>
-            <span class="ok">剩余50件</span>
+            <span :class="gridNumObj.small<6?'err':''" class="ok">剩余 {{ gridNumObj.small }} 件</span>
           </div>
           <div class="text-item">
             <span class="left">空格子</span>
-            <span class="ok">剩余50个</span>
+            <span class="ok">剩余 {{ gridNumObj.empty }} 个</span>
           </div>
         </div>
         <div class="home-card-left-bottom">
@@ -72,12 +72,30 @@
 </template>
 
 <script>
+import store from 'store'
+const DefaultGridObj = {}
+for (let i = 1; i <= 99; i++) {
+  DefaultGridObj[i] = {
+    type: 'empty',
+    before: 'empty'
+  }
+}
 export default {
   name: 'Home',
   data() {
     return {
-      isAdmin: true
+      gridObj: store.get('gridObj') || JSON.parse(JSON.stringify(DefaultGridObj)),
+      isAdmin: true,
+      gridNumObj: {
+        big: 0,
+        medium: 0,
+        small: 0,
+        empty: 0
+      }
     }
+  },
+  created() {
+    this.getGridStatus()
   },
   methods: {
     doLogout() {
@@ -92,6 +110,14 @@ export default {
 
     goSetClothes() {
       this.$router.replace({ name: 'OperateSet' })
+    },
+
+    getGridStatus() {
+      for (const key in this.gridObj) {
+        if (this.gridObj.hasOwnProperty(key)) {
+          this.gridNumObj[this.gridObj[key].type]++
+        }
+      }
     }
   }
 }
