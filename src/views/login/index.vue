@@ -44,7 +44,7 @@
     </div>
 
     <mu-dialog :open.sync="openSimple" title="Dialog" dialog-class="custom-dialog">
-      this is simple Dialog
+      <img class="loading" src="../../assets/img/yaonuo_loading_icon@2x.png" alt="">
     </mu-dialog>
   </div>
 </template>
