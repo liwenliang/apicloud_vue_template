@@ -18,20 +18,20 @@
         </div>
       </div>
       <div class="right-card">
-        <div :class="`right-card-top ${statusClass}`">
-          <div v-show="statusClass==='normal'" class="text-item">
-            大码：<span class="ok">剩余50件</span>
+        <div :class="`right-card-top ${isnormal?'normal':'unnormal'}`">
+          <div v-show="isnormal" class="text-item">
+            大码：<span :class="gridNumObj.big<6 ? 'err': ''" class="ok">剩余{{ gridNumObj.big }}件</span>
           </div>
-          <div v-show="statusClass==='normal'" class="text-item">
-            中码：<span class="ok err">剩余50件</span>
+          <div v-show="isnormal" class="text-item">
+            中码：<span :class="gridNumObj.medium<6 ? 'err': ''" class="ok">剩余{{ gridNumObj.medium }}件</span>
           </div>
-          <div v-show="statusClass==='normal'" class="text-item">
-            小码：<span class="ok">剩余50件</span>
+          <div v-show="isnormal" class="text-item">
+            小码：<span :class="gridNumObj.small<6 ? 'err': ''" class="ok">剩余{{ gridNumObj.small }}件</span>
           </div>
         </div>
         <div class="right-card-center">
-          <a v-show="statusClass==='normal'" class="btn normal" href="javascript:;" @click="openSimple = true">可领取衣物</a>
-          <a v-show="statusClass==='unnormal'" class="btn unnormal" href="javascript:;">柜子已停用</a>
+          <a v-show="isnormal" class="btn normal" href="javascript:;" @click="openSimple = true">柜子使用中</a>
+          <a v-show="!isnormal" class="btn unnormal" href="javascript:;">柜子已停用</a>
         </div>
         <div class="right-card-bottom">
           <i class="icon-wifi"/>
@@ -50,13 +50,31 @@
 </template>
 
 <script>
+import store from 'store'
+const DefaultGridObj = {}
+for (let i = 1; i <= 99; i++) {
+  DefaultGridObj[i] = {
+    type: 'empty',
+    before: 'empty'
+  }
+}
 export default {
   name: 'Home',
   data() {
     return {
-      statusClass: 'normal',
-      openSimple: false
+      gridObj: store.get('gridObj') || JSON.parse(JSON.stringify(DefaultGridObj)),
+      isnormal: true,
+      openSimple: false,
+      gridNumObj: {
+        big: 0,
+        medium: 0,
+        small: 0,
+        empty: 0
+      }
     }
+  },
+  created() {
+    this.getGridStatus()
   },
   methods: {
     doLogin() {
@@ -65,6 +83,14 @@ export default {
           this.$router.replace({ name: 'Home' })
         }
       })
+    },
+
+    getGridStatus() {
+      for (const key in this.gridObj) {
+        if (this.gridObj.hasOwnProperty(key)) {
+          this.gridNumObj[this.gridObj[key].type]++
+        }
+      }
     }
   }
 }

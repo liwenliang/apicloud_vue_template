@@ -3,7 +3,7 @@
     <div class="top-header-left-logo"/>
     <div class="top-header-right-status">
       <span class="time">3月22日 10:38</span>
-      <i class="wifi"/>
+      <i :class="`wifi ${onLine?'online':'offline'}`"/>
       <i v-if="theme==='dark'" class="name">W</i>
     </div>
   </header>
@@ -16,6 +16,23 @@ export default {
     theme: {
       type: String,
       default: 'light'
+    }
+  },
+  data() {
+    return {
+      open: false,
+      onLine: navigator.onLine
+    }
+  },
+  created() {
+    this.checkNetwork()
+  },
+  methods: {
+    checkNetwork() {
+      setTimeout(() => {
+        this.onLine = navigator.onLine
+        this.checkNetwork()
+      }, 3000)
     }
   }
 }
@@ -60,6 +77,13 @@ export default {
         color:rgba(38,74,148,1);
         text-align: center;
         line-height:.5rem;
+      }
+
+      .offline {
+        background: url("../../assets/img/yaonuo_header_no_wifi_icon@2x.png") no-repeat;
+      }
+
+      .online {
         background: url("../../assets/img/yaonuo_wifi_blue_icon@2x.png") no-repeat;
       }
     }
@@ -79,13 +103,17 @@ export default {
         color: #ffffff;
       }
 
-      .wifi {
-        background: url("../../assets/img/yaonuo_wifi_gray_icon@2x.png") no-repeat;
-      }
-
       .name {
         background: white;
         margin-left: .2rem;
+      }
+
+      .offline {
+        background: url("../../assets/img/yaonuo_header_no_wifi_icon@2x.png") no-repeat;
+      }
+
+      .online {
+        background: url("../../assets/img/yaonuo_wifi_gray_icon@2x.png") no-repeat;
       }
     }
   }
