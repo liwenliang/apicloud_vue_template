@@ -7,6 +7,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    { path: '/404', component: () => import('@/views/404') },
     { path: '/login', component: () => import('@/views/login/index') },
     {
       path: '/',
@@ -30,8 +31,24 @@ export default new Router({
           path: '/operate/get',
           name: 'OperateGet',
           component: () => import('@/views/operate/get')
+        },
+        {
+          path: '/operate/setConfirm',
+          name: 'OperateSetConfirm',
+          component: () => import('@/views/operate/setConfirm')
+        },
+        {
+          path: '/operate/set',
+          name: 'OperateSet',
+          component: () => import('@/views/operate/set')
+        },
+        {
+          path: '/operate/settings',
+          name: 'OperateSeting',
+          component: () => import('@/views/operate/settings')
         }
       ]
-    }
+    },
+    { path: '*', redirect: '/404', hidden: true }
   ]
 })

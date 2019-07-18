@@ -30,11 +30,11 @@
           </div>
         </div>
         <div class="right-card-center">
-          <a v-show="statusClass==='normal'" class="btn normal" href="javascript:;">可领取衣物</a>
+          <a v-show="statusClass==='normal'" class="btn normal" href="javascript:;" @click="openSimple = true">可领取衣物</a>
           <a v-show="statusClass==='unnormal'" class="btn unnormal" href="javascript:;">柜子已停用</a>
         </div>
         <div class="right-card-bottom">
-          <i class="icon-wifi" />
+          <i class="icon-wifi"/>
           3月22日 10:38
         </div>
       </div>
@@ -42,6 +42,10 @@
     <div class="bottom-info">
       <p>联系电话：18521033333</p>
     </div>
+
+    <mu-dialog :open.sync="openSimple" title="Dialog" dialog-class="custom-dialog">
+      this is simple Dialog
+    </mu-dialog>
   </div>
 </template>
 
@@ -50,7 +54,8 @@ export default {
   name: 'Home',
   data() {
     return {
-      statusClass: 'unnormal'
+      statusClass: 'normal',
+      openSimple: false
     }
   }
 }
@@ -110,6 +115,7 @@ export default {
           font-weight: 300;
           color: rgba(111, 111, 111, 1);
           line-height: .41rem;
+
           p {
             overflow: hidden;
             white-space: nowrap;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -27,3 +27,11 @@ export default {
   }
 }
 </script>
+
+<style type="text/css" lang="scss">
+  .custom-dialog {
+    width: 6rem !important;
+    height: 4rem !important;
+  }
+</style>
+

@@ -8,12 +8,8 @@
         <img class="pic-404__child right" src="@/assets/404_images/404_cloud.png" alt="404">
       </div>
       <div class="bullshit">
-        <div class="bullshit__oops">OOPS!</div>
-        <div class="bullshit__info">版权所有
-          <a class="link-type" href="https://wallstreetcn.com" target="_blank">华尔街见闻</a>
-        </div>
+        <div class="bullshit__oops">未找到页面!</div>
         <div class="bullshit__headline">{{ message }}</div>
-        <div class="bullshit__info">请检查您输入的网址是否正确，请点击以下按钮返回主页或者发送错误报告</div>
         <a href="" class="bullshit__return-home">返回首页</a>
       </div>
     </div>
@@ -26,7 +22,7 @@ export default {
   name: 'Page404',
   computed: {
     message() {
-      return '网管说这个页面你不能进......'
+      return '请检查您是否有权限访问该页面'
     }
   }
 }
@@ -41,13 +37,13 @@ export default {
 }
 .wscn-http404 {
   position: relative;
-  width: 1200px;
-  padding: 0 50px;
+  width: 12.00rem;
+  padding: 0 .50rem;
   overflow: hidden;
   .pic-404 {
     position: relative;
     float: left;
-    width: 600px;
+    width: 6.00rem;
     overflow: hidden;
     &__parent {
       width: 100%;
@@ -55,9 +51,9 @@ export default {
     &__child {
       position: absolute;
       &.left {
-        width: 80px;
-        top: 17px;
-        left: 220px;
+        width: .80rem;
+        top: .17rem;
+        left: 2.20rem;
         opacity: 0;
         animation-name: cloudLeft;
         animation-duration: 2s;
@@ -66,9 +62,9 @@ export default {
         animation-delay: 1s;
       }
       &.mid {
-        width: 46px;
-        top: 10px;
-        left: 420px;
+        width: .46rem;
+        top: .10rem;
+        left: 4.20rem;
         opacity: 0;
         animation-name: cloudMid;
         animation-duration: 2s;
@@ -77,9 +73,9 @@ export default {
         animation-delay: 1.2s;
       }
       &.right {
-        width: 62px;
-        top: 100px;
-        left: 500px;
+        width: .62rem;
+        top: 1.00rem;
+        left: 5.00rem;
         opacity: 0;
         animation-name: cloudRight;
         animation-duration: 2s;
@@ -89,67 +85,67 @@ export default {
       }
       @keyframes cloudLeft {
         0% {
-          top: 17px;
-          left: 220px;
+          top: .17rem;
+          left: 2.20rem;
           opacity: 0;
         }
         20% {
-          top: 33px;
-          left: 188px;
+          top: .33rem;
+          left: 1.88rem;
           opacity: 1;
         }
         80% {
-          top: 81px;
-          left: 92px;
+          top: .81rem;
+          left: .92rem;
           opacity: 1;
         }
         100% {
-          top: 97px;
-          left: 60px;
+          top: .97rem;
+          left: .60rem;
           opacity: 0;
         }
       }
       @keyframes cloudMid {
         0% {
-          top: 10px;
-          left: 420px;
+          top: .10rem;
+          left: 4.20rem;
           opacity: 0;
         }
         20% {
-          top: 40px;
-          left: 360px;
+          top: .40rem;
+          left: 3.60rem;
           opacity: 1;
         }
         70% {
-          top: 130px;
-          left: 180px;
+          top: 1.30rem;
+          left: 1.80rem;
           opacity: 1;
         }
         100% {
-          top: 160px;
-          left: 120px;
+          top: 1.60rem;
+          left: 1.20rem;
           opacity: 0;
         }
       }
       @keyframes cloudRight {
         0% {
-          top: 100px;
-          left: 500px;
+          top: 1.00rem;
+          left: 5.00rem;
           opacity: 0;
         }
         20% {
-          top: 120px;
-          left: 460px;
+          top: 1.20rem;
+          left: 4.60rem;
           opacity: 1;
         }
         80% {
-          top: 180px;
-          left: 340px;
+          top: 1.80rem;
+          left: 3.40rem;
           opacity: 1;
         }
         100% {
-          top: 200px;
-          left: 300px;
+          top: 2.00rem;
+          left: 3.00rem;
           opacity: 0;
         }
       }
@@ -158,38 +154,38 @@ export default {
   .bullshit {
     position: relative;
     float: left;
-    width: 300px;
-    padding: 30px 0;
+    width: 3.00rem;
+    padding: .30rem 0;
     overflow: hidden;
     &__oops {
-      font-size: 32px;
+      font-size: .32rem;
       font-weight: bold;
-      line-height: 40px;
+      line-height: .40rem;
       color: #1482f0;
       opacity: 0;
-      margin-bottom: 20px;
+      margin-bottom: .20rem;
       animation-name: slideUp;
       animation-duration: 0.5s;
       animation-fill-mode: forwards;
     }
     &__headline {
-      font-size: 20px;
-      line-height: 24px;
+      font-size: .20rem;
+      line-height: .24rem;
       color: #222;
       font-weight: bold;
       opacity: 0;
-      margin-bottom: 10px;
+      margin-bottom: .10rem;
       animation-name: slideUp;
       animation-duration: 0.5s;
       animation-delay: 0.1s;
       animation-fill-mode: forwards;
     }
     &__info {
-      font-size: 13px;
-      line-height: 21px;
+      font-size: .13rem;
+      line-height: .21rem;
       color: grey;
       opacity: 0;
-      margin-bottom: 30px;
+      margin-bottom: .30rem;
       animation-name: slideUp;
       animation-duration: 0.5s;
       animation-delay: 0.2s;
@@ -198,24 +194,24 @@ export default {
     &__return-home {
       display: block;
       float: left;
-      width: 110px;
-      height: 36px;
+      width: 1.10rem;
+      height: .36rem;
       background: #1482f0;
-      border-radius: 100px;
+      border-radius: 1.00rem;
       text-align: center;
       color: #ffffff;
-      opacity: 0;
-      font-size: 14px;
-      line-height: 36px;
+      /*opacity: 0;*/
+      font-size: .14rem;
+      line-height: .36rem;
       cursor: pointer;
-      animation-name: slideUp;
-      animation-duration: 0.5s;
-      animation-delay: 0.3s;
-      animation-fill-mode: forwards;
+      /*animation-name: slideUp;*/
+      /*animation-duration: 0.5s;*/
+      /*animation-delay: 0.3s;*/
+      /*animation-fill-mode: forwards;*/
     }
     @keyframes slideUp {
       0% {
-        transform: translateY(60px);
+        transform: translateY(.60rem);
         opacity: 0;
       }
       100% {
