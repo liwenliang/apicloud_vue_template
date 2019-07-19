@@ -124,6 +124,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "../../assets/scss/variables.scss";
   .yaonuo-container {
     .top {
       padding: 1rem 0 0 .84rem;
@@ -140,7 +141,7 @@ export default {
         box-sizing: border-box;
         width: 3.8rem;
         height: 4.4rem;
-        background-color: white;
+        background-color: $white;
         border-radius: .1rem;
         margin-right: .73rem;
         padding: .35rem .15rem .17rem .35rem;
@@ -152,7 +153,7 @@ export default {
           .text-item {
             font-size: .34rem;
             font-weight: 400;
-            color: #264A94;
+            color: $textBlue;
 
             &:not(:first-child) {
               margin-top: -0.1rem;
@@ -182,13 +183,13 @@ export default {
             }
 
             span.ok {
-              color: rgba(91, 182, 71, 1);
-              border-bottom: .03rem solid rgba(91, 182, 71, 1);
+              color: $textgreen;
+              border-bottom: .03rem solid $textgreen;
             }
 
             span.err {
-              color: #F57C6C;
-              border-bottom: .03rem solid #F57C6C;
+              color: $red;
+              border-bottom: .03rem solid $red;
             }
           }
         }
@@ -199,21 +200,21 @@ export default {
           .btn-full {
             width: 3.10rem;
             height: .75rem;
-            background: rgba(46, 182, 170, 1);
+            background: $green;
             border-radius: .43rem;
             font-size: .36rem;
             font-weight: 400;
-            color: rgba(255, 255, 255, 1);
+            color: $white;
           }
 
           .btn-left-half, .btn-right-half {
             width: 1.55rem;
             height: .75rem;
-            background: rgba(46, 182, 170, 1);
+            background: $green;
             border-radius: .43rem;
             font-size: .36rem;
             font-weight: 400;
-            color: rgba(255, 255, 255, 1);
+            color: $white;
           }
 
           .btn-left-half {
@@ -247,19 +248,19 @@ export default {
           width: 3.2rem;
           height: 4.4rem;
           border-radius: .1rem;
-          background-color: white;
+          background-color: $white;
           margin-right: .22rem;
 
           .home-card-right-l-top {
             box-sizing: border-box;
             height: 1.46rem;
-            border-bottom: .02rem solid rgba(207, 234, 248, 1);
+            border-bottom: .02rem solid $lightblue;
             padding: .3rem 0 0 .2rem;
 
             .home-card-right-l-top-title {
               font-size: .36rem;
               font-weight: 400;
-              color: rgba(38, 74, 148, 1);
+              color: $textBlue;
               margin-bottom: .06rem;
               white-space: nowrap;
               overflow: hidden;
@@ -269,7 +270,7 @@ export default {
             .home-card-right-l-top-subtitle {
               font-size: .24rem;
               font-weight: 400;
-              color: rgba(52, 151, 206, 1);
+              color: $blue;
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -288,17 +289,17 @@ export default {
                 display: inline-block;
                 box-sizing: border-box;
                 padding: .01rem .11rem;
-                background-color: #CFEAF8;
+                background-color: $lightblue;
                 font-size: .24rem;
                 font-weight: 400;
-                color: rgba(38, 74, 148, 1);
+                color: $textBlue;
                 margin-bottom: 0.05rem;
               }
 
               .desc {
                 font-size: .24rem;
                 font-weight: 400;
-                color: rgba(38, 74, 148, 1);
+                color: $textBlue;
                 opacity: 0.7;
                 height: .6rem;
               }
@@ -328,7 +329,7 @@ export default {
                 width: .787rem;
                 height: .787rem;
                 border-radius: 50%;
-                background-color: #264A94;
+                background-color: $textBlue;
                 font-size: .49rem;
                 font-weight: 400;
                 color: rgba(255, 255, 255, 1);
@@ -344,7 +345,7 @@ export default {
                 .title {
                   font-size: .36rem;
                   font-weight: 400;
-                  color: rgba(38, 74, 148, 1);
+                  color: $textBlue;
                   margin-bottom: .06rem;
                   white-space: nowrap;
                   overflow: hidden;
@@ -354,7 +355,7 @@ export default {
                 .subtitle {
                   font-size: .24rem;
                   font-weight: 400;
-                  color: rgba(52, 151, 206, 1);
+                  color: $blue;
                   white-space: nowrap;
                   overflow: hidden;
                   text-overflow: ellipsis;
@@ -374,17 +375,17 @@ export default {
                   display: inline-block;
                   box-sizing: border-box;
                   padding: .01rem .11rem;
-                  background-color: #CFEAF8;
+                  background-color: $lightblue;
                   font-size: .24rem;
                   font-weight: 400;
-                  color: rgba(38, 74, 148, 1);
+                  color: $textBlue;
                   margin-bottom: 0.05rem;
                 }
 
                 .desc {
                   font-size: .24rem;
                   font-weight: 400;
-                  color: rgba(38, 74, 148, 1);
+                  color: $textBlue;
                   opacity: 0.7;
                   height: .6rem;
                 }
@@ -398,7 +399,7 @@ export default {
               width: 3.20rem;
               height: .85rem;
               line-height: .85rem;
-              background-color: #F57C6C;
+              background-color: $red;
               border-radius: .43rem;
               text-align: center;
               font-size: .36rem;

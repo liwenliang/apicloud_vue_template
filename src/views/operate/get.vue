@@ -23,6 +23,7 @@
 
 <script>
 import store from 'store'
+
 const DefaultGridObj = {}
 for (let i = 1; i <= 99; i++) {
   DefaultGridObj[i] = {
@@ -105,6 +106,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "../../assets/scss/variables";
   .operate-container {
     box-sizing: border-box;
     padding: .8rem 0 0 0.98rem;
@@ -122,7 +124,7 @@ export default {
       .text {
         font-size: .40rem;
         font-weight: 400;
-        color: rgba(6, 17, 31, 1);
+        color: $black;
       }
 
       .icon-time {
@@ -135,7 +137,7 @@ export default {
 
         font-size: .20rem;
         font-weight: 300;
-        color: rgba(215, 215, 215, 1);
+        color: $gray;
         line-height: .47rem;
         text-align: center;
       }
@@ -148,17 +150,17 @@ export default {
       .default {
         width: 1.8rem;
         height: .7rem;
-        background: #D0D0D0;
+        background: $gray;
         text-align: center;
         font-size: .28rem;
         font-weight: 300;
-        color: rgba(6, 17, 31, 1);
+        color: $black;
         margin-right: .3rem;
       }
 
       .active {
-        background: #3497CE;
-        color: rgba(255, 255, 255, 1);
+        background: $blue;
+        color: $white;
       }
     }
 
@@ -173,16 +175,16 @@ export default {
         font-size: .30rem;
         text-align: center;
         font-weight: 400;
-        color: rgba(255, 255, 255, 1);
+        color: $white;
         margin-right: .2rem;
       }
 
       .red {
-        background: #F57C6C
+        background: $red;
       }
 
       .green {
-        background: #2EB6AA;
+        background: $green;
       }
     }
   }

@@ -79,6 +79,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "../../assets/scss/variables.scss";
   .operate-container {
     box-sizing: border-box;
     padding: .8rem 0 0 0.98rem;
@@ -97,7 +98,7 @@ export default {
       .text {
         font-size: .40rem;
         font-weight: 400;
-        color: rgba(6, 17, 31, 1);
+        color: $black;
       }
     }
 
@@ -108,16 +109,16 @@ export default {
       p {
         font-size: .28rem;
         font-weight: 300;
-        color: rgba(6, 17, 31, 1);
+        color: $black;
         line-height: .56rem;
       }
 
       .red {
-        color: #F57C6C
+        color: $red;
       }
 
       .green {
-        color: #2EB6AA;
+        color: $green;
       }
     }
 
@@ -132,16 +133,16 @@ export default {
         font-size: .30rem;
         text-align: center;
         font-weight: 400;
-        color: rgba(255, 255, 255, 1);
+        color: $white;
         margin-right: .2rem;
       }
 
       .red {
-        background: #F57C6C
+        background:$red;
       }
 
       .green {
-        background: #2EB6AA;
+        background: $green;
       }
     }
   }

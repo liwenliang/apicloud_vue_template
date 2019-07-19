@@ -29,24 +29,6 @@ export default {
 </script>
 
 <style type="text/css" lang="scss">
-  .custom-dialog {
-    width: 6rem !important;
-    height: 4rem !important;
-    border-radius: .1rem;
-    text-align: center;
-
-    .loading {
-      animation: rotating 1.5s linear infinite;
-    }
-
-    @keyframes rotating {
-      from {
-        transform: rotate(0);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-  }
+  @import "assets/scss/app.scss";
 </style>
 

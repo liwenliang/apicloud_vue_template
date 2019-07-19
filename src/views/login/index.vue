@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="right-card-center">
-          <a v-show="isnormal" class="btn normal" href="javascript:;" @click="openSimple = true">柜子使用中</a>
+          <a v-show="isnormal" class="btn normal" href="javascript:;" @click="openSimple = true">正常使用中</a>
           <a v-show="!isnormal" class="btn unnormal" href="javascript:;">柜子已停用</a>
         </div>
         <div class="right-card-bottom">

@@ -34,8 +34,21 @@
       </div>
     </div>
     <div class="opt-area">
+      <mu-button class="opt-button red" @click="goHome">首页</mu-button>
       <mu-button class="opt-button green" @click="confirmInfo">确认</mu-button>
     </div>
+
+    <mu-dialog :open.sync="openSimple" title="补衣确认" dialog-class="custom-dialog">
+      <div class="dialog-text">
+        <p>大码：{{ bigDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(bigDiff) }} </span>件</p>
+        <p>中码：{{ mediumDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(mediumDiff) }} </span>件</p>
+        <p>小码：{{ smallDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(smallDiff) }} </span>件</p>
+      </div>
+      <div class="optarea">
+        <mu-button class="opt-button bgred" @click="cancelInfo">取消</mu-button>
+        <mu-button class="opt-button bggreen" @click="completeOption">确定补衣</mu-button>
+      </div>
+    </mu-dialog>
   </div>
 </template>
 
@@ -58,7 +71,11 @@ export default {
       startMouseOver: false,
       downIndex: -1,
       overIndex: -1,
-      upIndex: -1
+      upIndex: -1,
+      openSimple: false,
+      bigDiff: 0,
+      mediumDiff: 0,
+      smallDiff: 0
     }
   },
   created() {
@@ -140,16 +157,61 @@ export default {
     },
 
     confirmInfo() {
+      this.resetGrid()
+      this.openSimple = true
+      this.getGridDiffent()
+    },
+
+    getGridDiffent() {
+      const before = {
+        big: 0,
+        medium: 0,
+        small: 0,
+        empty: 0
+      }
+      for (const key in this.beforeGridObj) {
+        if (this.beforeGridObj.hasOwnProperty(key)) {
+          before[this.beforeGridObj[key].type]++
+        }
+      }
+
+      const current = {
+        big: 0,
+        medium: 0,
+        small: 0,
+        empty: 0
+      }
+      for (const key in this.gridObj) {
+        if (this.gridObj.hasOwnProperty(key)) {
+          current[this.gridObj[key].type]++
+        }
+      }
+
+      this.bigDiff = current.big - before.big
+      this.mediumDiff = current.medium - before.medium
+      this.smallDiff = current.small - before.small
+    },
+
+    completeOption() {
       this.$store.commit('app/setBeforeGridObj', this.beforeGridObj)
       this.$store.commit('app/setGridObj', this.gridObj)
       store.set('gridObj', this.gridObj)
-      this.$router.replace({ name: 'OperateSetConfirm' })
+      this.goHome()
+    },
+
+    cancelInfo() {
+      this.openSimple = false
+    },
+
+    goHome() {
+      this.$router.replace({ name: 'Home' })
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
+  @import "../../assets/scss/variables.scss";
   .operate-container {
     box-sizing: border-box;
     padding: .8rem 0 0 0.98rem;
@@ -168,7 +230,7 @@ export default {
       .text {
         font-size: .40rem;
         font-weight: 400;
-        color: rgba(6, 17, 31, 1);
+        color: $black;
       }
     }
 
@@ -184,23 +246,23 @@ export default {
       }
 
       .big {
-        background: #3497CE;
+        background: $blue;
       }
 
       .medium {
-        background: #2EB6AA;
+        background: $green;
       }
 
       .small {
-        background: #F2BC00;
+        background: $yellow;
       }
 
       .empty {
-        background: #D0D0D0;
+        background: $gray;
       }
 
       .opening {
-        background: #F57C6C;
+        background: $red;
       }
 
       .gezi-area {
@@ -240,7 +302,7 @@ export default {
             line-height: .4rem;
             font-size: .22rem;
             font-weight: 300;
-            color: rgba(111, 111, 111, 1);
+            color: $black;
           }
 
           .btn {
@@ -251,7 +313,7 @@ export default {
             text-align: center;
             font-size: .22rem;
             font-weight: 400;
-            color: rgba(255, 255, 255, 1);
+            color: $white;
             margin-right: .2rem;
           }
         }
@@ -261,13 +323,12 @@ export default {
 
           .button {
             width: 1.4rem;
-            height: .4rem;
+            height: .5rem;
             line-height: .4rem;
             border-radius: .2rem;
             text-align: center;
-            background: #F57C6C;
+            background: $red;
             font-size: .22rem;
-            font-family: SourceHanSansCN-Normal;
             font-weight: 400;
             color: rgba(255, 255, 255, 1);
           }
@@ -279,24 +340,42 @@ export default {
       margin-top: .4rem;
       padding: 0 0 0 .65rem;
 
-      .opt-button {
-        width: 1.8rem;
-        height: .64rem;
-        border-radius: .32rem;
-        font-size: .30rem;
-        text-align: center;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 1);
-        margin-right: .2rem;
-      }
-
       .red {
-        background: #F57C6C
+        background: $red;
       }
 
       .green {
-        background: #2EB6AA;
+        background: $green;
       }
+    }
+  }
+
+  .dialog-text {
+    p {
+      font-size: .28rem;
+      font-weight: 300;
+      color: $black;
+      line-height: .56rem;
+    }
+
+    .red {
+      color: $red;
+    }
+
+    .green {
+      color: $green;
+    }
+  }
+
+  .optarea {
+    margin-top: .5rem;
+
+    .bgred {
+      background: $red;
+    }
+
+    .bggreen {
+      background: $green;
     }
   }
 </style>

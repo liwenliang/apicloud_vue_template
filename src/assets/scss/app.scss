@@ -1,0 +1,30 @@
+.custom-dialog {
+  width: 6rem !important;
+  height: 4rem !important;
+  border-radius: .1rem;
+  text-align: center;
+
+  .loading {
+    animation: rotating 1.5s linear infinite;
+  }
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.opt-button {
+  width: 1.8rem;
+  height: .64rem;
+  border-radius: .32rem;
+  font-size: .30rem;
+  text-align: center;
+  font-weight: 400;
+  color: white;
+  margin-right: .2rem;
+}
