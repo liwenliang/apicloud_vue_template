@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style type="text/css" lang="scss">
+<style type="text/css" scoped lang="scss">
   .desc-area {
     margin-top: .59rem;
     box-sizing: border-box;

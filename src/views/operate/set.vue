@@ -2,7 +2,7 @@
   <div class="operate-container">
     <div class="title">
       <i class="icon-gezi"/>
-      <span class="text">请确认补衣操作</span>
+      <span class="text">请为已补充的衣物分配格子</span>
     </div>
     <div class="desc-area">
       <div class="gezi-area">
@@ -34,8 +34,8 @@
       </div>
     </div>
     <div class="opt-area">
-      <mu-button class="opt-button red" @click="goHome">首页</mu-button>
-      <mu-button class="opt-button green" @click="confirmInfo">确认</mu-button>
+      <mu-button class="opt-button redbg" @click="goHome">首页</mu-button>
+      <mu-button class="opt-button greenbg" @click="confirmInfo">确认</mu-button>
     </div>
 
     <mu-dialog :open.sync="openSimple" title="补衣确认" dialog-class="custom-dialog">

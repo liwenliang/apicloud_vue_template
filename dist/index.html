@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>发衣发鞋柜</title><meta name=apple-mobile-web-app-capable content=yes><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta content="telephone=no" name=format-detection><meta content="email=no" name=format-detection><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><link rel=stylesheet href=http://image.yaonuokeji.com/yixi/static/material-design-icons/material-design-icons.css><link href=./static/css/app.646bf180dd34fae23e25bf3037e936e4.css rel=stylesheet></head><body><div id=app></div><script>//这里处理物理返回键，避免打包后点击一次直接退出应用
+  window.apiready = function () {
+    var timer = 0
+    api.addEventListener({
+      name: 'keyback'
+    }, function (ret, err) {
+      var currentTime = +new Date()
+      api.historyBack(function (ret, err) {
+        if (!ret.status) {
+          if ((currentTime - timer) > 1000) {
+            timer = currentTime
+            api.toast({
+              msg: '再按一次返回键退出应用',
+              duration: 1000,
+              location: 'bottom'
+            })
+          } else {
+            api.closeWidget({
+              id: 'A6081345905452', //这里改成自己的应用ID
+              retData: {
+                name: 'closeWidget'
+              },
+              silent: true
+            })
+          }
+        }
+      })
+    })
+  }</script><script type=text/javascript src=./static/js/manifest.77aa71938f14ff86e034.js></script><script type=text/javascript src=./static/js/vendor.8680fe28aeeb6e26cad5.js></script><script type=text/javascript src=./static/js/app.6e4fea52c5863b5d34ed.js></script></body></html>
