@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .custom-dialog {
   width: 6rem !important;
   height: 4rem !important;
@@ -27,4 +29,12 @@
   font-weight: 400;
   color: white;
   margin-right: .2rem;
+}
+
+.redbg {
+  background: $red;
+}
+
+.greenbg {
+  background: $green;
 }

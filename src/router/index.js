@@ -32,11 +32,11 @@ export default new Router({
           name: 'OperateGet',
           component: () => import('@/views/operate/get')
         },
-        {
-          path: '/operate/setConfirm',
-          name: 'OperateSetConfirm',
-          component: () => import('@/views/operate/setConfirm')
-        },
+        // {
+        //   path: '/operate/setConfirm',
+        //   name: 'OperateSetConfirm',
+        //   component: () => import('@/views/operate/setConfirm')
+        // },
         {
           path: '/operate/set',
           name: 'OperateSet',

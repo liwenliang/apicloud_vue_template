@@ -15,8 +15,8 @@
       </mu-button>
     </div>
     <div class="opt-area">
-      <mu-button class="opt-button red" @click="goHome">首页</mu-button>
-      <mu-button class="opt-button green" @click="giveMeAClothes">确认</mu-button>
+      <mu-button class="opt-button redbg" @click="goHome">首页</mu-button>
+      <mu-button class="opt-button greenbg" @click="giveMeAClothes">确认</mu-button>
     </div>
   </div>
 </template>
@@ -167,25 +167,6 @@ export default {
     .opt-area {
       margin-top: 3.03rem;
       padding: 0 0 0 .65rem;
-
-      .opt-button {
-        width: 1.8rem;
-        height: .64rem;
-        border-radius: .32rem;
-        font-size: .30rem;
-        text-align: center;
-        font-weight: 400;
-        color: $white;
-        margin-right: .2rem;
-      }
-
-      .red {
-        background: $red;
-      }
-
-      .green {
-        background: $green;
-      }
     }
   }
 </style>

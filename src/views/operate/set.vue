@@ -45,8 +45,8 @@
         <p>小码：{{ smallDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(smallDiff) }} </span>件</p>
       </div>
       <div class="optarea">
-        <mu-button class="opt-button bgred" @click="cancelInfo">取消</mu-button>
-        <mu-button class="opt-button bggreen" @click="completeOption">确定补衣</mu-button>
+        <mu-button class="opt-button redbg" @click="cancelInfo">取消</mu-button>
+        <mu-button class="opt-button greenbg" @click="completeOption">确定补衣</mu-button>
       </div>
     </mu-dialog>
   </div>
@@ -369,13 +369,5 @@ export default {
 
   .optarea {
     margin-top: .5rem;
-
-    .bgred {
-      background: $red;
-    }
-
-    .bggreen {
-      background: $green;
-    }
   }
 </style>
