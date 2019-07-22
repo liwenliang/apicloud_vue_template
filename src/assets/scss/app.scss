@@ -20,7 +20,7 @@
   }
 }
 
-.opt-button {
+button.opt-button {
   width: 1.8rem;
   height: .64rem;
   border-radius: .32rem;
@@ -31,10 +31,10 @@
   margin-right: .2rem;
 }
 
-.redbg {
+button.redbg {
   background: $red;
 }
 
-.greenbg {
+button.greenbg {
   background: $green;
 }

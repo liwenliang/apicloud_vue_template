@@ -4,7 +4,7 @@
       <i class="icon-gezi"/>
       <span class="text">设置</span>
     </div>
-    <div class="desc-area">
+    <div class="settings-area">
       <mu-form ref="form" :model="settingForm" :label-width="121" class="mu-demo-form" label-position="left">
         <mu-flex justify-content="between">
           <mu-flex>
@@ -85,8 +85,8 @@ export default {
 }
 </script>
 
-<style type="text/css" scoped lang="scss">
-  .desc-area {
+<style type="text/css" lang="scss">
+  .settings-area {
     margin-top: .59rem;
     box-sizing: border-box;
     padding: 0 1rem 0 .65rem;
