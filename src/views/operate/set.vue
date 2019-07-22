@@ -1,7 +1,7 @@
 <template>
   <div class="operate-container">
     <div class="title">
-      <i class="icon-gezi"/>
+      <i class="icon-gezi" />
       <span class="text">请为已补充的衣物分配格子</span>
     </div>
     <div class="desc-area">
@@ -14,8 +14,13 @@
               class="grid-cell"
               @click="gridClicked(key)"
               @touchstart.stop="gridMouseDown(key)"
-              @touchmove.stop="gridMouseOver($event)"
-              @touchend.stop="gridMouseUp($event)">
+              @touchmove.stop="gridTouchMove($event)"
+              @touchend.stop="gridTouchUp($event)"
+
+              @mousedown.stop="gridMouseDown(key)"
+              @mousemove.stop="gridMouseOver(key)"
+              @mouseup.stop="gridMouseUp(key)"
+            >
               {{ formatNum(key) }}
             </div>
           </div>
@@ -23,19 +28,41 @@
       </div>
       <div class="info-area">
         <div class="btn-area">
-          <p><mu-button class="btn big" @click="setActive('big')">大码</mu-button>当前 {{ getNum('big') }} 个</p>
-          <p><mu-button class="btn medium" @click="setActive('medium')">中码</mu-button>当前 {{ getNum('medium') }} 个</p>
-          <p><mu-button class="btn small" @click="setActive('small')">小码</mu-button>当前 {{ getNum('small') }} 个</p>
-          <p><mu-button class="btn empty" @click="setActive('empty')">空格子</mu-button>当前 {{ getNum('empty') }} 个</p>
+          <p>
+            <mu-button class="btn big" @click="setActive('big')">
+              大码
+            </mu-button>当前 {{ getNum('big') }} 个
+          </p>
+          <p>
+            <mu-button class="btn medium" @click="setActive('medium')">
+              中码
+            </mu-button>当前 {{ getNum('medium') }} 个
+          </p>
+          <p>
+            <mu-button class="btn small" @click="setActive('small')">
+              小码
+            </mu-button>当前 {{ getNum('small') }} 个
+          </p>
+          <p>
+            <mu-button class="btn empty" @click="setActive('empty')">
+              空格子
+            </mu-button>当前 {{ getNum('empty') }} 个
+          </p>
         </div>
         <div class="clear-area">
-          <mu-button class="button red" @click="resetGrid">清空选择</mu-button>
+          <mu-button class="button red" @click="resetGrid">
+            清空选择
+          </mu-button>
         </div>
       </div>
     </div>
     <div class="opt-area">
-      <mu-button class="opt-button redbg" @click="goHome">首页</mu-button>
-      <mu-button class="opt-button greenbg" @click="confirmInfo">确认</mu-button>
+      <mu-button class="opt-button redbg" @click="goHome">
+        首页
+      </mu-button>
+      <mu-button class="opt-button greenbg" @click="confirmInfo">
+        确认
+      </mu-button>
     </div>
 
     <mu-dialog :open.sync="openSimple" title="补衣确认" dialog-class="custom-dialog">
@@ -45,8 +72,12 @@
         <p>小码：{{ smallDiff>=0 ? '放入': '取出' }}<span class="red"> {{ Math.abs(smallDiff) }} </span>件</p>
       </div>
       <div class="optarea">
-        <mu-button class="opt-button redbg" @click="cancelInfo">取消</mu-button>
-        <mu-button class="opt-button greenbg" @click="completeOption">确定补衣</mu-button>
+        <mu-button class="opt-button redbg" @click="cancelInfo">
+          取消
+        </mu-button>
+        <mu-button class="opt-button greenbg" @click="completeOption">
+          确定补衣
+        </mu-button>
       </div>
     </mu-dialog>
 
@@ -56,11 +87,15 @@
         <br>
         <br>
         <p>当前补衣操作将取消，确定要返回首页吗？</p>
-        <p/>
+        <p />
       </div>
       <div class="optarea">
-        <mu-button class="opt-button redbg" @click="cancelInfo">取消</mu-button>
-        <mu-button class="opt-button greenbg" @click="doGoHome">确定</mu-button>
+        <mu-button class="opt-button redbg" @click="cancelInfo">
+          取消
+        </mu-button>
+        <mu-button class="opt-button greenbg" @click="doGoHome">
+          确定
+        </mu-button>
       </div>
     </mu-dialog>
   </div>
@@ -113,7 +148,17 @@ export default {
       this.downIndex = idx
     },
 
-    gridMouseUp($event) {
+    gridMouseUp(idx) {
+      this.startMouseOver = false
+      this.upIndex = idx
+
+      this.opening = []
+      for (let i = Math.min(this.downIndex, this.upIndex); i <= Math.max(this.downIndex, this.upIndex); i++) {
+        this.gridObj[i].type = 'opening'
+      }
+    },
+
+    gridTouchUp($event) {
       var myLocation = $event.changedTouches[0]
       var realTarget = document.elementFromPoint(myLocation.clientX, myLocation.clientY)
       this.startMouseOver = false
@@ -125,7 +170,19 @@ export default {
       }
     },
 
-    gridMouseOver($event) {
+    gridMouseOver(idx) {
+      if (!this.startMouseOver) {
+        return
+      }
+      this.overIndex = idx
+      this.resetGrid()
+
+      for (let i = Math.min(this.downIndex, this.overIndex); i <= Math.max(this.downIndex, this.overIndex); i++) {
+        this.gridObj[i].type = 'opening'
+      }
+    },
+
+    gridTouchMove($event) {
       if (!this.startMouseOver) {
         return
       }
