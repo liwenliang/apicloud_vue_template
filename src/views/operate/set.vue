@@ -49,6 +49,20 @@
         <mu-button class="opt-button greenbg" @click="completeOption">确定补衣</mu-button>
       </div>
     </mu-dialog>
+
+    <mu-dialog :open.sync="goHomeConfirm" title="返回首页" dialog-class="custom-dialog">
+      <div class="dialog-text">
+        <br>
+        <br>
+        <br>
+        <p>当前补衣操作将取消，确定要返回首页吗？</p>
+        <p/>
+      </div>
+      <div class="optarea">
+        <mu-button class="opt-button redbg" @click="cancelInfo">取消</mu-button>
+        <mu-button class="opt-button greenbg" @click="doGoHome">确定</mu-button>
+      </div>
+    </mu-dialog>
   </div>
 </template>
 
@@ -75,7 +89,8 @@ export default {
       openSimple: false,
       bigDiff: 0,
       mediumDiff: 0,
-      smallDiff: 0
+      smallDiff: 0,
+      goHomeConfirm: false
     }
   },
   created() {
@@ -158,8 +173,12 @@ export default {
 
     confirmInfo() {
       this.resetGrid()
-      this.openSimple = true
       this.getGridDiffent()
+      if (this.bigDiff === 0 && this.mediumDiff === 0 && this.smallDiff === 0) {
+        this.doGoHome()
+      } else {
+        this.openSimple = true
+      }
     },
 
     getGridDiffent() {
@@ -196,14 +215,24 @@ export default {
       this.$store.commit('app/setBeforeGridObj', this.beforeGridObj)
       this.$store.commit('app/setGridObj', this.gridObj)
       store.set('gridObj', this.gridObj)
-      this.goHome()
+      this.doGoHome()
     },
 
     cancelInfo() {
       this.openSimple = false
+      this.goHomeConfirm = false
     },
 
     goHome() {
+      this.getGridDiffent()
+      if (this.bigDiff !== 0 || this.mediumDiff !== 0 || this.smallDiff !== 0) {
+        this.goHomeConfirm = true
+      } else {
+        this.doGoHome()
+      }
+    },
+
+    doGoHome() {
       this.$router.replace({ name: 'Home' })
     }
   }
